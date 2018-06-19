@@ -1,5 +1,7 @@
 <?php 
 include('funciones.php');
+$_SESSION['usuario'] = "Usuario 1";
+$_SESSION['perfil'] = "Admin";
 
 function cargar_temas($materia) {
 	$consulta = "SELECT TIPO FROM TEMAS JOIN ";

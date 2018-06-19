@@ -17,11 +17,9 @@
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
 </head>
 <?php 
 include('php/temas-funciones.php');
-$_SESSION['tipo_usuario'] = "Admin";
 ?>
 <body>
     <div class="navbar navbar-inverse set-radius-zero" >
@@ -32,7 +30,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
 
                     <img src="assets/img/logo.png" />
                 </a>
@@ -40,7 +38,15 @@ $_SESSION['tipo_usuario'] = "Admin";
             </div>
 
             <div class="right-div">
+            	<?php if (isset($_SESSION['usuario'])) { 
+            	echo "<div class='usuario'>".$_SESSION['usuario']."</div>";
+            	?>
+            	<div class="usuario">
                 <a href="#" class="btn btn-danger pull-right">Salir</a>
+            	</div>
+                <?php } else { ?>
+                <a href="login.php" class="btn btn-info">Iniciar Sesión</a>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -53,6 +59,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.php" class="menu-top-active">Inicio</a></li>
                            
+                           <?php if (isset($_SESSION['perfil'])) {?>
                             <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Mis Materias <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
@@ -67,18 +74,20 @@ $_SESSION['tipo_usuario'] = "Admin";
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carrera2</a></li>
                                 </ul>
                             </li>
-                            <?php if ($_SESSION['tipo_usuario'] == "Admin") { ?>
+                            <?php } else { ?>
+                            <li><a href="alta-usuarios.php" class="menu-top-active">Registrarse</a></li>
+                            <?php } if ($_SESSION['perfil'] == "Admin") { ?>
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Datos <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="alta-usuarios.php">Registro de Usuarios</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="buscar-usuarios.php">Buscar Usuarios</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Materias</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carreras</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="abm-materias.php">Materias</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="abm-carreras.php">Carreras</a></li>
                                 </ul>
                             </li>
                             <?php } ?>
-                            <?php if($_SESSION['tipo_usuario'] == "Admin" OR $_SESSION['tipo_usuario'] == "Profesor") {
+                            <?php if($_SESSION['perfil'] == "Admin" OR $_SESSION['perfil'] == "Profesor") {
                                 ?>
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Temas <i class="fa fa-angle-down"></i></a>

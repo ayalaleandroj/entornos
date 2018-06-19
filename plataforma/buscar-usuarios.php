@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>ABM de Usuarios</title>
+    <title>Usuarios</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -20,7 +20,7 @@
 
 </head>
 <?php 
-$_SESSION['tipo_usuario'] = "Admin";
+include("php/temas-funciones.php");
 ?>
 
 <body>
@@ -32,16 +32,25 @@ $_SESSION['tipo_usuario'] = "Admin";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
 
                     <img src="assets/img/logo.png" />
                 </a>
 
             </div>
 
-            <div class="right-div">
-                <a href="#" class="btn btn-info pull-right">Salir</a>
+	        <div class="right-div">
+            	<?php if (isset($_SESSION['usuario'])) { 
+            		echo "<div class='usuario'>".$_SESSION['usuario']."</div>";
+            	?>
+            	<div class="usuario">
+                	<a href="#" class="btn btn-danger pull-right">Salir</a>
+            	</div>
+                <?php } else { ?>
+                	<a href="login.php" class="btn btn-info">Iniciar Sesión</a>
+                <?php } ?>
             </div>
+
         </div>
     </div>
     <!-- LOGO HEADER END-->
@@ -53,6 +62,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.php" class="menu-top-active">Inicio</a></li>
                            
+                           <?php if (isset($_SESSION['perfil'])) {?>
                             <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Mis Materias <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
@@ -67,18 +77,20 @@ $_SESSION['tipo_usuario'] = "Admin";
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carrera2</a></li>
                                 </ul>
                             </li>
-                            <?php if ($_SESSION['tipo_usuario'] == "Admin") { ?>
+                            <?php } else { ?>
+                            <li><a href="alta-usuarios.php" class="menu-top-active">Registrarse</a></li>
+                            <?php } if ($_SESSION['perfil'] == "Admin") { ?>
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Datos <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="alta-usuarios.php">Alta de Usuarios</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="buscar-usuarios.php">Buscar Usuarios</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Materias</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carreras</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="alta-usuarios.php">Registro de Usuarios</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="buscar-usuarios.php">Buscar Usuarios</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="abm-materias.php">Materias</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="abm-carreras.php">Carreras</a></li>
                                 </ul>
                             </li>
                             <?php } ?>
-                            <?php if($_SESSION['tipo_usuario'] == "Admin" OR $_SESSION['tipo_usuario'] == "Profesor") {
+                            <?php if($_SESSION['perfil'] == "Admin" OR $_SESSION['perfil'] == "Profesor") {
                                 ?>
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Temas <i class="fa fa-angle-down"></i></a>
@@ -88,7 +100,6 @@ $_SESSION['tipo_usuario'] = "Admin";
                                 </ul>
                             </li>
                             <?php } ?>
-
                         </ul>
                     </div>
                 </div>
@@ -112,6 +123,22 @@ $_SESSION['tipo_usuario'] = "Admin";
                             Buscar Usuarios
                         </div>
                         <div class="panel-body">
+                        	<form action="" method="post">
+	                            <input style="width:300px; float:left;" class="form-control" type="text" />
+	                            <input type="submit" value="Buscar"/>
+	                            <div class="radio">
+                                        <label>
+                                            <input type="radio" name="opcionnombre" id="opcionnombre" value="nombre" checked="">Por Nombre&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="opcionapellido" id="opcionapellido" value="apellido">Por Apellido&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label>
+                                        	<input type="radio" name="opciondni" id="opciondni" value="dni">Por DNI
+   	                                    </label>
+                                </div>
+                                     
+                            </form>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>

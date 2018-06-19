@@ -20,7 +20,7 @@
 
 </head>
 <?php 
-$_SESSION['tipo_usuario'] = "Admin";
+include("php/temas-funciones.php");
 ?>
 
 <body>
@@ -32,7 +32,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
 
                     <img src="assets/img/logo.png" />
                 </a>
@@ -40,7 +40,15 @@ $_SESSION['tipo_usuario'] = "Admin";
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-info pull-right">Salir</a>
+            	<?php if (isset($_SESSION['usuario'])) { 
+            	echo "<div class='usuario'>".$_SESSION['usuario']."</div>";
+            	?>
+            	<div class="usuario">
+                <a href="#" class="btn btn-danger pull-right">Salir</a>
+            	</div>
+                <?php } else { ?>
+                <a href="login.php" class="btn btn-info">Iniciar Sesión</a>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -53,6 +61,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.php" class="menu-top-active">Inicio</a></li>
                            
+                           <?php if (isset($_SESSION['perfil'])) {?>
                             <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Mis Materias <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
@@ -67,18 +76,20 @@ $_SESSION['tipo_usuario'] = "Admin";
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carrera2</a></li>
                                 </ul>
                             </li>
-                            <?php if ($_SESSION['tipo_usuario'] == "Admin") { ?>
+                            <?php } else { ?>
+                            <li><a href="alta-usuarios.php" class="menu-top-active">Registrarse</a></li>
+                            <?php } if ($_SESSION['perfil'] == "Admin") { ?>
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Datos <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="alta-usuarios.php">Alta de Usuarios</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="buscar-usuarios.php">Buscar Usuarios</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Materias</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carreras</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="alta-usuarios.php">Registro de Usuarios</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="buscar-usuarios.php">Buscar Usuarios</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="abm-materias.php">Materias</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="abm-carreras.php">Carreras</a></li>
                                 </ul>
                             </li>
                             <?php } ?>
-                            <?php if($_SESSION['tipo_usuario'] == "Admin" OR $_SESSION['tipo_usuario'] == "Profesor") {
+                            <?php if($_SESSION['perfil'] == "Admin" OR $_SESSION['perfil'] == "Profesor") {
                                 ?>
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Temas <i class="fa fa-angle-down"></i></a>
@@ -88,7 +99,6 @@ $_SESSION['tipo_usuario'] = "Admin";
                                 </ul>
                             </li>
                             <?php } ?>
-
                         </ul>
                     </div>
                 </div>
@@ -101,7 +111,7 @@ $_SESSION['tipo_usuario'] = "Admin";
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">Alta de Usuarios</h4>
+                <h4 class="header-line">Registro de Usuarios</h4>
                 
                             </div>
 
@@ -131,6 +141,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                                             <label>Fecha de Nacimiento</label>
                                             <input name="fechanac" class="form-control" type="text" />
                                         </div>
+                                        <?php if($_SESSION['perfil'] == "Admin") { ?>
                                         <div class="form-group">
                                             <label>Perfil</label>
                                             <select name="perfil" class="form-control">
@@ -139,7 +150,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                                                 <option value="admin">Administrador</option>
                                             </select>
                                         </div>
-                            
+                            			<?php } ?>
                                         <!--</div>
                                             <div class="form-group">
                                             <label>Text area</label>
@@ -175,7 +186,7 @@ $_SESSION['tipo_usuario'] = "Admin";
                                             <input name="passrepetido" class="form-control" type="password" />
                                         </div>
 
-                                        <button type="submit" class="btn btn-danger">Registrar Usuario</button>
+                                        <button type="submit" class="btn btn-info">Registrar Usuario</button>
 
                                     <!--</form>-->
                             </div>

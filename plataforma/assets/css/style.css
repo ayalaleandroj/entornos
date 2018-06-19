@@ -219,3 +219,8 @@ height: 60px;
         color:#000;
     }
 
+/*Iniciar sesion*/
+.usuario {
+			float: left;
+			margin: 5px;
+		}
