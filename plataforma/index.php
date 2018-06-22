@@ -92,8 +92,8 @@ include('php/temas-funciones.php');
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Temas <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Nuevo Tema</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mis Temas</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="crear-tema.php">Nuevo Tema</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="mis-temas.php">Mis Temas</a></li>
                                 </ul>
                             </li>
                             <?php } ?> 

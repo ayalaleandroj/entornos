@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Materias</title>
+    <title>Temas</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -112,15 +112,15 @@ include("php/temas-funciones.php");
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">Materias</h4>
+                <h4 class="header-line">Mis Temas</h4>
                 
                             </div>
 
         </div>
         <!--   Kitchen Sink -->
-        		    <div class="panel panel-default">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            Buscar Materias
+                            Buscar Temas
                         </div>
                         <div class="panel-body">
                         	<form action="" method="post">
@@ -128,10 +128,10 @@ include("php/temas-funciones.php");
 	                            <input type="submit" value="Buscar"/>
 	                            <div class="radio">
                                         <label>
-                                            <input type="radio" name="opcionnombre" id="opcionnombre" value="nombre" checked="">Por Nombre de Materia&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="filtrotema" id="filtrotema" value="nombre" checked="">Por Título&nbsp;&nbsp;&nbsp;
                                         </label>
                                         <label>
-                                            <input type="radio" name="opcionapellido" id="opcionapellido" value="apellido">Por Carrera&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="filtrotema" id="filtrotema" value="apellido">Por Materia&nbsp;&nbsp;&nbsp;
                                         </label>
                                 </div>
                                      
@@ -141,16 +141,22 @@ include("php/temas-funciones.php");
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nombre Materia</th>
-                                            <th>Carrera</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>DNI</th>
+                                            <th>Perfil</th>
+                                            <th>Usuario</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Matemática I</td>
-                                            <td>Lic. en TICs</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>242332</td>
+                                            <td>Profesor</td>                                            
+                                            <td>mk1</td>
                                             <td style="text-align: center;">
                                                 <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
                                                 <a href="#"><img src="assets/img/eliminar.png" /></a>
@@ -158,8 +164,11 @@ include("php/temas-funciones.php");
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Inglés Técnico I</td>
-                                            <td>Lic. en TICs</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>45434</td>
+                                            <td>Alumno</td>                                            
+                                            <td>jt2</td>
                                             <td style="text-align: center;">
                                                 <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
                                                 <a href="#"><img src="assets/img/eliminar.png" /></a>
@@ -167,8 +176,11 @@ include("php/temas-funciones.php");
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Entornos Virtuales de Enseñanza y Aprendizaje</td>
-                                            <td>Lic. en TICs</td>
+                                            <td>Larry</td>
+                                            <td>Bird</td>
+                                            <td>2432353</td>
+                                            <td>Alumno</td>                                            
+                                            <td>lb1</td>
                                             <td style="text-align: center;">
                                                 <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
                                                 <a href="#"><img src="assets/img/eliminar.png" /></a>
@@ -179,32 +191,6 @@ include("php/temas-funciones.php");
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                           Registrar Materia Nueva
-                        </div>
-                        <div class="panel-body">
-                            <!--<form role="form">-->
-                                    
-                                        <div class="form-group">
-                                            <label>Nombre Materia</label>
-                                            <input style="width:300px;" name="usuario" class="form-control" type="text" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Carrera</label>
-                                            <select style="width:300px;" name="perfil" class="form-control">
-                                                <option value="TICS">Lic. en TICs</option>
-                                                <option value="contador">Contador Público</option>
-                                                <option value="comercioext">Lic. en Comercio Exterior</option>
-                                            </select>
-                                        </div>
- 		
-                                        <button type="submit" class="btn btn-info">Registrar Materia</button>
-
-                                    <!--</form>-->
-                            </div>
-                        </div>
-                
                      <!-- End  Kitchen Sink -->     
     </div>
      <!-- CONTENT-WRAPPER SECTION END-->

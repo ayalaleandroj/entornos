@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Materias</title>
+    <title>Crear Nuevo Tema</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -39,18 +39,17 @@ include("php/temas-funciones.php");
 
             </div>
 
-	        <div class="right-div">
+            <div class="right-div">
             	<?php if (isset($_SESSION['usuario'])) { 
-            		echo "<div class='usuario'>".$_SESSION['usuario']."</div>";
+            	echo "<div class='usuario'>".$_SESSION['usuario']."</div>";
             	?>
             	<div class="usuario">
-                	<a href="#" class="btn btn-danger pull-right">Salir</a>
+                <a href="#" class="btn btn-danger pull-right">Salir</a>
             	</div>
                 <?php } else { ?>
-                	<a href="login.php" class="btn btn-info">Iniciar Sesión</a>
+                <a href="login.php" class="btn btn-info">Iniciar Sesión</a>
                 <?php } ?>
             </div>
-
         </div>
     </div>
     <!-- LOGO HEADER END-->
@@ -95,8 +94,8 @@ include("php/temas-funciones.php");
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Temas <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="nuevo-tema.php">Nuevo Tema</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="mis-temas.php">Mis Temas</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Nuevo Tema</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mis Temas</a></li>
                                 </ul>
                             </li>
                             <?php } ?>
@@ -112,101 +111,56 @@ include("php/temas-funciones.php");
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">Materias</h4>
+                <h4 class="header-line">Nuevo Tema</h4>
                 
                             </div>
 
         </div>
-        <!--   Kitchen Sink -->
-        		    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Buscar Materias
-                        </div>
-                        <div class="panel-body">
-                        	<form action="" method="post">
-	                            <input style="width:300px; float:left;" class="form-control" type="text" />
-	                            <input type="submit" value="Buscar"/>
-	                            <div class="radio">
-                                        <label>
-                                            <input type="radio" name="opcionnombre" id="opcionnombre" value="nombre" checked="">Por Nombre de Materia&nbsp;&nbsp;&nbsp;
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="opcionapellido" id="opcionapellido" value="apellido">Por Carrera&nbsp;&nbsp;&nbsp;
-                                        </label>
-                                </div>
-                                     
-                            </form>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre Materia</th>
-                                            <th>Carrera</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Matemática I</td>
-                                            <td>Lic. en TICs</td>
-                                            <td style="text-align: center;">
-                                                <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
-                                                <a href="#"><img src="assets/img/eliminar.png" /></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Inglés Técnico I</td>
-                                            <td>Lic. en TICs</td>
-                                            <td style="text-align: center;">
-                                                <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
-                                                <a href="#"><img src="assets/img/eliminar.png" /></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Entornos Virtuales de Enseñanza y Aprendizaje</td>
-                                            <td>Lic. en TICs</td>
-                                            <td style="text-align: center;">
-                                                <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
-                                                <a href="#"><img src="assets/img/eliminar.png" /></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                           Registrar Materia Nueva
-                        </div>
+        <form id="usuario" action="prueba.php" method="post">
+             <div class="row">
+               <div class="panel panel-info">
                         <div class="panel-body">
                             <!--<form role="form">-->
-                                    
                                         <div class="form-group">
-                                            <label>Nombre Materia</label>
-                                            <input style="width:300px;" name="usuario" class="form-control" type="text" />
+                                            <label>Título</label>
+                                            <input style="width: 600px;" name="nombre" class="form-control" type="text" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Carrera</label>
-                                            <select style="width:300px;" name="perfil" class="form-control">
-                                                <option value="TICS">Lic. en TICs</option>
-                                                <option value="contador">Contador Público</option>
-                                                <option value="comercioext">Lic. en Comercio Exterior</option>
+                                            <label>Clase de Tema</label>
+                                            <select style="width: 600px;" name="tipotema" class="form-control">
+                                                <option value="Trabajo">Trabajo Práctico</option>
+                                                <option value="Apuntes">Apuntes</option>
+                                                <option value="Nota">Notas de Exámen</option>
+                                                <option value="Bibliografía">Bibliografía</option>
+                                                <option value="Noticias">Noticias</option>
                                             </select>
                                         </div>
- 		
-                                        <button type="submit" class="btn btn-info">Registrar Materia</button>
+                                        <div class="form-group">
+                                            <label>Materia</label>
+                                            <select style="width: 600px;" name="materia" class="form-control">
+                                                <option value="1">Entornos Virtuales</option>
+                                                <option value="2">Análisis y Diseño de Sistemas</option>
+                                                <option value="3">Matemática II</option>
+                                                <option value="4">Redes y Telecomunicaciones</option>
+                                                <option value="5">Programación IV</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contenido</label>
+                                            <textarea style="width: 900px;" class="form-control" rows="20"></textarea>
+                                        </div>
+                                  
+                                 
+                                       
+                                        <button type="submit" class="btn btn-info">Publicar Tema</button>
 
                                     <!--</form>-->
                             </div>
                         </div>
-                
-                     <!-- End  Kitchen Sink -->     
-    </div>
+                            </div>
+    </form>
+             
+    
      <!-- CONTENT-WRAPPER SECTION END-->
     <section class="footer-section">
         <div class="container">

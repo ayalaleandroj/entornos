@@ -95,8 +95,8 @@ include("php/temas-funciones.php");
                             <li>
                               <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Gestión de Temas <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Nuevo Tema</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mis Temas</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="nuevo-tema.php">Nuevo Tema</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="mis-temas.php">Mis Temas</a></li>
                                 </ul>
                             </li>
                             <?php } ?>
@@ -128,13 +128,13 @@ include("php/temas-funciones.php");
 	                            <input type="submit" value="Buscar"/>
 	                            <div class="radio">
                                         <label>
-                                            <input type="radio" name="opcionnombre" id="opcionnombre" value="nombre" checked="">Por Nombre&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="filtropersonas" id="filtropersonas" value="nombre" checked="">Por Nombre&nbsp;&nbsp;&nbsp;
                                         </label>
                                         <label>
-                                            <input type="radio" name="opcionapellido" id="opcionapellido" value="apellido">Por Apellido&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="filtropersonas" id="filtropersonas" value="apellido">Por Apellido&nbsp;&nbsp;&nbsp;
                                         </label>
                                         <label>
-                                        	<input type="radio" name="opciondni" id="opciondni" value="dni">Por DNI
+                                        	<input type="radio" name="filtropersonas" id="filtropersonas" value="dni">Por DNI
    	                                    </label>
                                 </div>
                                      
