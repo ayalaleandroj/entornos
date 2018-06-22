@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -169,51 +169,39 @@ include('php/temas-funciones.php');
                         </div>
                     </div>
                     <div class="row">
-                        <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Collapsible Accordion Panel Group
-                        </div>
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">Collapsible Group Item #1</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
-                                        <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse in" style="height: auto;">
-                                        <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">Collapsible Group Item #3</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="panel panel-info" style="width: 760px;">
+                            <div class="panel-heading">
+                                Comentarios
                             </div>
+                            <div class="panel panel-default" style="margin: 20px; width: 730px;">
+                                    <div class="panel-heading">
+                                    Caro
+                                    </div>
+                                    <div class="panel-body">
+                                        Esta tarea no me gusta
+                                    </div>
+                            </div>
+                            <div class="panel panel-default" style="margin: 20px; width: 730px;">
+                                    <div class="panel-heading">
+                                    Fede   
+                                    </div>
+                                    <div class="panel-body">
+                                        A mi si me gusta
+                                    </div>
+                            </div>
+  
+                            <div class="form-group" style="width: 750px; margin: 5px;">
+                                <label>Ingresar Comentario</label>
+                                <input class="form-control" type="text" style="min-height:100px;" /><br/>
+                                <button type="submit" class="btn btn-success">Enviar Comentario</button>
+                            </div>
+                                       
                         </div>
-                    </div>    
+                    </div>  
+                    <div class="row">
+                        
+                    </div>
+
                     </div>    
                 </div>
             </div>
