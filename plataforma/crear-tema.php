@@ -60,23 +60,13 @@ include("php/temas-funciones.php");
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="index.php" class="menu-top-active">Inicio</a></li>
-                           
-                           <?php if (isset($_SESSION['perfil'])) {?>
                             <li>
-                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Mis Materias <i class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Clases<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Materia1</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Materia2</a></li>
+                                    <?php cargarCarreras(); ?>
                                 </ul>
                             </li>
-                            <li>
-                              <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Mis Carreras <i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Carrera1</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Carrera2</a></li>
-                                </ul>
-                            </li>
-                            <?php } else { ?>
+                            <?php if (!(isset($_SESSION['perfil']))) { ?>
                             <li><a href="alta-usuarios.php" class="menu-top-active">Registrarse</a></li>
                             <?php } if ($_SESSION['perfil'] == "Admin") { ?>
                             <li>
@@ -146,10 +136,14 @@ include("php/temas-funciones.php");
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Contenido</label>
-                                            <textarea style="width: 900px;" class="form-control" rows="20"></textarea>
+                                            <label>Descripción</label>
+                                            <textarea style="width: 600px;" class="form-control" rows="5"></textarea>
                                         </div>
-                                  
+                                  		
+                                  		<div class="form-group">
+                                            <label>Contenido</label>
+                                            <input type="file" />
+                                        </div>
                                  
                                        
                                         <button type="submit" class="btn btn-info">Publicar Tema</button>

@@ -16,7 +16,7 @@
 	}
 
 	//funcion para insertar datos mediante una sentencia sql insert/update/delete dada
-	function insertar($consulta) {
+	function modificarBD($consulta) {
 		conectar();
 		try {
 			$accesoBD = $GLOBALS['conexion']->prepare($consulta);

@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Temas</title>
+    <title>Clases</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -17,7 +17,11 @@
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
+    <style type="text/css">
+        .centro-ins {
+            text-align: center;
+        }
+    </style>
 </head>
 <?php 
 include("php/temas-funciones.php");
@@ -102,65 +106,112 @@ include("php/temas-funciones.php");
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">Mis Temas</h4>
+                <h4 class="header-line"><?php echo obtenerTitulo($_GET['idcarrera']); ?></h4>
                 
                             </div>
 
         </div>
         <!--   Kitchen Sink -->
-                    <div class="panel panel-default">
+        		    <div class="panel panel-info">
                         <div class="panel-heading">
-                            Buscar Temas
+                            Primer Año
                         </div>
                         <div class="panel-body">
-                        	<form action="" method="post">
-	                            <input style="width:300px; float:left;" class="form-control" type="text" />
-	                            <input type="submit" value="Buscar"/>
-	                            <div class="radio">
-                                        <label>
-                                            <input type="radio" name="filtrotema" id="filtrotema" value="nombre" checked="">Por Título&nbsp;&nbsp;&nbsp;
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="filtrotema" id="filtrotema" value="apellido">Por Materia&nbsp;&nbsp;&nbsp;
-                                        </label>
-                                </div>
-                                     
-                            </form>
+                        	<div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nombre Materia</th>
+                                            <th>Inscripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php obtenerMaterias($_GET['idcarrera'], 1); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Segundo Año
+                        </div>
+                        <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Título</th>
-                                            <th>Fecha</th>
-                                            <th>Tipo Tema</th>
-                                            <th>Materia</th>
-                                            <th>Acciones</th>
+                                            <th>Nombre Materia</th>
+                                            <th>Inscripción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php obtenerMaterias($_GET['idcarrera'], 2); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Tercer Año
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Trabajo Práctico Nº1</td>
-                                            <td>27/06/2018</td>
-                                            <td>Trabajo Práctico</td>
-                                            <td>Entornos Virtuales de Enseñanza y Aprendizaje</td>
-                                            <td style="text-align: center;">
-                                                <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
-                                                <a href="#"><img src="assets/img/eliminar.png" /></a>
-                                            </td>
+                                            <th>ID</th>
+                                            <th>Nombre Materia</th>
+                                            <th>Inscripción</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php obtenerMaterias($_GET['idcarrera'], 3); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Cuarto Año
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Notas Exámen</td>
-                                            <td>21/06/2018</td>
-                                            <td>Notas</td>
-                                            <td>Matemática II</td>
-                                            <td style="text-align: center;">
-                                                <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
-                                                <a href="#"><img src="assets/img/eliminar.png" /></a>
-                                            </td>
+                                            <th>ID</th>
+                                            <th>Nombre Materia</th>
+                                            <th>Inscripción</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php obtenerMaterias($_GET['idcarrera'], 4); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Quinto Año
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nombre Materia</th>
+                                            <th>Inscripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php obtenerMaterias($_GET['idcarrera'], 5); ?>
                                     </tbody>
                                 </table>
                             </div>
