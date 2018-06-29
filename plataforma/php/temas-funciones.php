@@ -1,8 +1,46 @@
 <?php 
 include('funciones.php');
-$_SESSION['usuario'] = "Usuario1";
-$_SESSION['perfil'] = "Alumno";
+$_SESSION['usuario'] = "profesor1";
+$_SESSION['perfil'] = "Profesor";
 $_SESSION['idusuario'] = 1;
+
+
+function cargarArchivo($adju_nombre,$adju_ruta,$tema_titulo,$tema_descripcion,
+	 				   $tipotema_descri,$idMateria, $tipo_adjunto){
+
+//Obtengo el id del profesor para insertarlo Usuario_Nombre	Usuario_pass
+	$usuario = $_SESSION['usuario'];
+	$profesorConsutla = "SELECT ID_PROFESOR FROM PROFESORES JOIN PERSONAS ON ID_PERSONA = PROFESORES.RELA_PERSONA JOIN USUARIOS ON ID_USUARIO = USUARIOS.RELA_PERSONA WHERE Usuario_Nombre = '".$usuario."'";
+	$profesor = consulta($profesorConsutla);
+	$profesorID = $profesor[0]['ID_PROFESOR'];
+
+//Inserto el Tipo del Tema y consulto su ID
+	//modificarBD("INSERT INTO TIPO_TEMA(Tipo_Tema_Descripcion) VALUES('".$tipotema_descri."')");
+	$tipoTema = consulta("SELECT ID_TIPO_TEMA FROM TIPO_TEMA WHERE TIPO_TEMA_DESCRIPCION ='".$tipotema_descri."'");
+	$tipoTemaID = $tipoTema[0]['ID_TIPO_TEMA'];
+
+//inserto Tema y recupero su ID;
+	modificarBD("INSERT INTO TEMAS VALUES(NULL,".$idMateria.",".$tipoTemaID.",'".$tema_descripcion."','".$tema_titulo."','-',NOW(),".$profesorID.",'-')");
+	$tema = consulta("SELECT ID_TEMA FROM TEMAS WHERE TEMA_TITULO= '".$tema_titulo."'");
+	$temaID = $tema[0]['ID_TEMA'];
+
+//Inserto un Tipo de Adjunto y recupero su ID
+	//SE CARGARÍA DIRECTAMENTE EN LA BASE DE DATOS; 
+	//modificarBD("INSERT INTO TIPO_ADJUNTO VALUES(NULL,'".$tipo_adjunto."')");
+	$tipoAdjunto = consulta("SELECT ID_TIPO_ADJUNTO FROM TIPO_ADJUNTO 
+							WHERE TIPO_ADJUNTO_DESCRIPCION ='".$tipo_adjunto."'");
+	$tipoAdjuntoID = $tipoAdjunto[0]['ID_TIPO_ADJUNTO'];
+
+//Inserto el archivo
+$query = modificarBD("INSERT INTO ADJUNTOS VALUES
+   						(NULL,".$temaID.",".$tipoAdjuntoID.",'".$adju_nombre."','".$adju_ruta."')");
+
+    if($query){ //EN EL CASO DE QUE LA CARGA SEA SATISFACTORIA
+        echo "<script type=\"text/javascript\">alert(\"Se guardo correctamente.\");</script>";  
+    } else {//EN EL CASO DE QUE LA CARGA PRODUZCA ALGÚN ERROR
+        echo "<script type=\"text/javascript\">alert(\"Hubo un error, intente nuevamente.\");</script>"; 
+    }
+}
 
 function cargar_temas($materia) {
 	$consulta = "SELECT TIPO FROM TEMAS JOIN ";
@@ -99,11 +137,13 @@ function inscripcionMateria($materia, $usuario) {
 		if($_SESSION['perfil'] == "Profesor") {
 			$profesor = consulta("SELECT ID_PROFESOR FROM PROFESORES JOIN PERSONAS ON ID_PERSONA = PROFESORES.RELA_PERSONA JOIN USUARIOS ON ID_USUARIO = USUARIOS.RELA_PERSONA WHERE ID_USUARIO = ".$usuario);
 			$profesorID = $profesor[0]['ID_PROFESOR'];
+			
 			modificarBD("INSERT INTO PROFESORXMATERIA(RELA_PROFESOR, RELA_MATERIA) VALUES(".$profesorID.", ".$materia.")");
 			echo "<script>alert('Materia asignada a profesor correctamente');</script>";
 		} elseif($_SESSION['perfil'] == "Alumno") {
 			$alumno = consulta("SELECT ID_ALUMNO FROM ALUMNOS JOIN PERSONAS ON ID_PERSONA = ALUMNOS.RELA_PERSONA JOIN USUARIOS ON ID_USUARIO = USUARIOS.RELA_PERSONA WHERE ID_USUARIO =".$usuario);
 			$alumnoID = $alumno[0]["ID_ALUMNO"];
+			
 			modificarBD("INSERT INTO MATERIAS_CURSADAS(ESTADO_CURSO, FECHA_INSCRIPCION, RELA_ALUMNO, RELA_MATERIA) VALUES ('activo', '".date('Y-m-d')."', ".$alumnoID.", ".$materia.")");
 			echo "<script>alert('Inscripción a materia realizada correctamente');</script>";
 		}

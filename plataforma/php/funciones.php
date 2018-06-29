@@ -14,7 +14,6 @@
 		}
 		desconectar();
 	}
-
 	//funcion para insertar datos mediante una sentencia sql insert/update/delete dada
 	function modificarBD($consulta) {
 		conectar();
@@ -23,6 +22,7 @@
 			$accesoBD->execute();
 			return true;
 		} catch(PDOException $error) {
+			return false;
 			echo "Error al insertar: ", $error->getMessage();
 		}
 		desconectar();

@@ -139,7 +139,8 @@ include("php/temas-funciones.php");
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <!-- ACA IRÁ LA FUNCUCIÓN DE CARGA -->
+                                        <!-- <tr>
                                             <td>1</td>
                                             <td>Trabajo Práctico Nº1</td>
                                             <td>27/06/2018</td>
@@ -149,18 +150,7 @@ include("php/temas-funciones.php");
                                                 <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
                                                 <a href="#"><img src="assets/img/eliminar.png" /></a>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Notas Exámen</td>
-                                            <td>21/06/2018</td>
-                                            <td>Notas</td>
-                                            <td>Matemática II</td>
-                                            <td style="text-align: center;">
-                                                <a href="#"><img src="assets/img/editar.png" /></a>&nbsp;
-                                                <a href="#"><img src="assets/img/eliminar.png" /></a>
-                                            </td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

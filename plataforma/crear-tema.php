@@ -21,6 +21,28 @@
 </head>
 <?php 
 include("php/temas-funciones.php");
+if (isset($_POST['subir'])) {
+//Datos que recibimos por post del archivo
+  $adju_nombre = $_FILES['archivo']['name']; //ADJUNTOS
+  $adju_ruta = $_FILES['archivo']['tmp_name']; //ADJUNTOS
+  $tipo = explode(".", $adju_nombre); //ADJUNTOS
+  $tipo_adjunto = $tipo[1];
+  $tamanio = $_FILES['archivo']['size'];
+  $destino = "archivos/" . $adju_nombre;//Lugar donde se guardaran los datos.
+
+	if ($adju_nombre !="") {
+	   	if (copy($adju_ruta, $destino)) {
+	    //Datros del archivo que recibimos por post
+			$tema_titulo= $_POST['titulo']; //TEMA_TITULO
+	        $tema_descripcion= $_POST['descripcion']; //TEMA_DESCRIPCION
+	        $tipotema_descri = $_POST['tipotema']; //TIPO_TEMA
+	        $materia_descri = $_POST['materia']; //MATERIA_DESCRIPCION
+	 		cargarArchivo($adju_nombre,$destino,$tema_titulo,$tema_descripcion,
+	 					$tipotema_descri,$materia_descri, $tipo_adjunto);
+	    }
+	}
+}
+
 ?>
 
 <body>
@@ -106,14 +128,14 @@ include("php/temas-funciones.php");
                             </div>
 
         </div>
-        <form id="usuario" action="prueba.php" method="post">
+        <form id="usuario" action="" method="post" enctype="multipart/form-data">
              <div class="row">
                <div class="panel panel-info">
                         <div class="panel-body">
                             <!--<form role="form">-->
                                         <div class="form-group">
                                             <label>Título</label>
-                                            <input style="width: 600px;" name="nombre" class="form-control" type="text" />
+                                            <input style="width: 600px;" name="titulo" class="form-control" type="text" required />
                                         </div>
                                         <div class="form-group">
                                             <label>Clase de Tema</label>
@@ -137,16 +159,16 @@ include("php/temas-funciones.php");
                                         </div>
                                         <div class="form-group">
                                             <label>Descripción</label>
-                                            <textarea style="width: 600px;" class="form-control" rows="5"></textarea>
+                                            <textarea name = "descripcion" style="width: 600px;" class="form-control" rows="5"></textarea>
                                         </div>
                                   		
                                   		<div class="form-group">
                                             <label>Contenido</label>
-                                            <input type="file" />
+                                           <input type="file" name="archivo">
                                         </div>
                                  
                                        
-                                        <button type="submit" class="btn btn-info">Publicar Tema</button>
+                                        <button type="submit" class="btn btn-info" name="subir" value="Envíar">Publicar Tema</button>
 
                                     <!--</form>-->
                             </div>
@@ -160,7 +182,7 @@ include("php/temas-funciones.php");
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 2014 Yourdomain.com |<a href="http://www.binarytheme.com/" target="_blank"  > Designed by : binarytheme.com</a> 
+                   &copy; 2018 Plataforma Virtual - FAEN |<a href="http://www.binarytheme.com/" target="_blank"  ></a> 
                 </div>
 
             </div>
