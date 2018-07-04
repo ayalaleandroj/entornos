@@ -1,8 +1,8 @@
 <?php 
 include('funciones.php');
-$_SESSION['usuario'] = "profesor1";
+/*$_SESSION['usuario'] = "profesor1";
 $_SESSION['perfil'] = "Profesor";
-$_SESSION['idusuario'] = 1;
+$_SESSION['idusuario'] = 1;*/
 
 
 function cargarArchivo($adju_nombre,$adju_ruta,$tema_titulo,$tema_descripcion,

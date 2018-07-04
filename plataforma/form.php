@@ -41,7 +41,7 @@ $_SESSION['tipo_usuario'] = "Admin";
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-info pull-right">Salir</a>
+                <a href="destroy.php" class="btn btn-info pull-right">Salir</a>
             </div>
         </div>
     </div>

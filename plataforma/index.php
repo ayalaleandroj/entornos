@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -42,7 +43,7 @@ include('php/temas-funciones.php');
             	echo "<div class='usuario'>".$_SESSION['usuario']."</div>";
             	?>
             	<div class="usuario">
-                <a href="#" class="btn btn-danger pull-right">Salir</a>
+                <a href="destroy.php" class="btn btn-danger pull-right">Salir</a>
             	</div>
                 <?php } else { ?>
                 <a href="login.php" class="btn btn-info">Iniciar Sesión</a>

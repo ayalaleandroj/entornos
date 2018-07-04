@@ -1,6 +1,10 @@
 <?php
 define('NOMBREBD', 'plataforma');
 session_start();
+if(empty($_SESSION['usuario']))
+{
+	header('location: login.php'); 
+}
 
 date_default_timezone_set('America/Argentina/Buenos_Aires'); //Fecha configurada para Argentina
 

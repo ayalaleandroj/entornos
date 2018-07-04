@@ -1,3 +1,9 @@
+<?php 
+    if(session_start() == 1 && !empty($_SESSION['usuario']))
+    {
+        header("location: index.php");
+    }
+ ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -24,31 +30,62 @@
                     Iniciar Sesión
                  </div>
                  <div class="panel-body">
-                     <form role="form" action="index.html">
-                                 
-                          <div class="form-group">
-                                     <label>Nombre de Usuario</label>
-                                     <input class="form-control" type="text" required/>
-                                 </div>
-                                     <div class="form-group">
-                                     <label>Contraseña</label>
-                                     <input class="form-control" type="password" required/>
-                                 </div>
-                         <button type="submit" class="btn btn-danger">Ingresar</button>
-                         <button type="button" class="btn btn-info" onclick="window.location='registrar.php'">Registrarse</button>
-                     </form>
+                     <form action="" method="POST" id="form-login" name="form-login">  
+                        <div class="form-group">
+                        <label>Nombre de Usuario</label>
+                            <input class="form-control" type="text" name="usuario" required/>
+                        </div>
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input class="form-control" type="password" name="password" required/>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Ingresar</button>
+                        <button type="button" class="btn btn-info" onclick="window.location='registrar.php'">Registrarse</button>
+                        <div style="width: 100%; text-align: center; border:">
+                            <img src="img/loader-black.gif" alt="" id="loader-carga" style="display: none;">
+                            <div id="alert-login" class="alert alert-danger" role="alert" style="width: 50%; margin: 0 auto; margin-top: 10px; display: none;">El usuario o contraseña son incorrectos</div>
+                        </div>
+                    </form>
                  </div>
              </div>
          </div>
-    </div>
     <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY  -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#form-login').on('submit',function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: 'login-code.php',
+                    type: 'post',
+                    data: $('#form-login').serialize(),
+                    beforeSend: function(){     
+                        $('#loader-carga').css('display','inline');
+                    },
+                    success: function(resp){
+                        if (resp === '1')
+                        {
+                            window.location.href = "index.php";
+                        }
+                        else
+                        {
+                            $("#alert-login").css('display','block');
+                        }
+                        $('#loader-carga').css('display','none');
+                    },
+                    error: function(jqJHR, estado, error){
+                        console.log(estado);
+                        console.log(error);
+                    }
+                });
+            }); 
+        });
+    </script>
+    
     <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="assets/js/bootstrap.js"></script>
-      <!-- CUSTOM SCRIPTS  -->
-    <script src="assets/js/custom.js"></script>
+  
 </body>
 </html>
 
